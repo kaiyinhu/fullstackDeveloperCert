@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body onload="doGame()"  >
+
+<h1>Hello World!</h1>
+
+<script>
+
+    var flag = false;
+	var colors = ["blue", "cyan", "gold", "gray", "magenta", "orange", "red", "white", "yellow"];
+	
+function doGame() {
+	var c = prompt("JavaScript I am thinking of one of these colors: blue, cyan, gold, gray, green, magenta, orange, red, white, yellow. What color am I thinking of?");
+	var randomcolor = colors[Math.floor(Math.random() * colors.length)];
+	
+	while (flag!=true)
+	{
+       guessColor(c, randomcolor);
+    }
+}
+
+function guessColor(color, randomcolor) {
+
+	if (!include(colors, color)) {
+		var c1 = prompt("Sorry, I don't recognize your color. Please try again");
+		guessColor(c1, randomcolor)
+	}
+	else if (color != randomcolor && include(colors, color)) {
+		if (color > randomcolor) {
+			var c2= prompt("Sorry, your guess is not correct! Hint: your color is alphabetically higher than mine, please try again");
+				guessColor(c2, randomcolor)
+		}
+
+		else if (color < randomcolor) {
+			var c3 = prompt("Sorry, your guess is not correct! Hint: your color is alphabetically lower than mine, please try again");
+			guessColor(c3, randomcolor)
+		}
+	}
+	else if ((color == randomcolor) && include(colors, color)) {
+		prompt("congrats!");
+		flag = true;
+		document.body.style.backgroundColor = randomcolor;
+	}
+}
+
+function include(arr, obj)
+{
+	return (arr.indexOf(obj)!=-1);
+}
+</script>
+
+</body>
+</html>
