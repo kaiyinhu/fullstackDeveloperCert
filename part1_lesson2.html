@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body onload="doGame()"  >
+
+<h1>Hello World!</h1>
+
+<script>
+
+    var flag = false;
+	var colors = ["blue", "cyan", "gold", "gray", "magenta", "orange", "red", "white", "yellow"];
+	
+function doGame() {
+	
+	var randomcolor = colors[Math.floor(Math.random() * colors.length)];
+	
+	while (flag!=true)
+	{
+       var c = prompt("JavaScript I am thinking of one of these colors: blue, cyan, gold, gray, green, magenta, orange, red, white, yellow. What color am I thinking of?"); 
+       guessColor(c, randomcolor);
+    }
+}
+
+function guessColor(color, randomcolor) {
+
+if ((color == randomcolor) && include(colors, color)) {
+		flag = true;
+}
+}
+
+function include(arr, obj)
+{
+	return (arr.indexOf(obj)!=-1);
+}
+</script>
+
+</body>
+</html>

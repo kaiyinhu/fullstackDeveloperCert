@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body onload="myFunction()">
+
+<h1>Hello World!</h1>
+
+<script>
+function myFunction() {
+	var c = prompt("JavaScript I am thinking of one of these colors: blue, cyan, gold, gray, green, magenta, orange, red, white, yellow What color am I thinking of?");
+	
+	while (guessColor(c)!=true)
+	{
+       guessColor(c); 
+    }
+}
+
+function guessColor(color)
+{
+	var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+	
+	var randomcolor = colors[Math.floor(Math.random()*colors.length)];
+	
+	if (!include(colors, color))
+	{
+		prompt("Sorry, I don't recognize your color. Please try again");
+		return false;
+	}
+	if (color!=randomcolor && include(colors, color))
+	{
+		prompt("Sorry, your guess is not correct! Hint: your color is alphebetically higher than mine, please try again");
+		return false;
+	}
+	if (color == randomcolor && include(colors, color)){
+		prompt("congrats!");
+		return true;
+	}
+}
+
+function include(arr, obj)
+{
+	return (arr.indexOf(obj)!=-1);
+}
+</script>
+
+</body>
+</html>
